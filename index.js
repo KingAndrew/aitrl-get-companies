@@ -2,9 +2,9 @@
 'use strict';
 
 // Added to handle injection
-const vandium = require('vandium');
+const vandium = require('./node_modules/vandium');
 
-let mysql = require('mysql');
+let mysql = require('./node_modules/mysql');
 
 exports.handler = vandium.generic()
   .handler((event, context, callback) => {
@@ -16,13 +16,24 @@ exports.handler = vandium.generic()
       port: '[rds_port]',
       database: '[rds_database]'
     });
+    connection.connect(error => {
+          if (error) throw error;
+          console.log("Connected!");
+      });
 
     let sql = 'SELECT * FROM company';
 
-    console.log('GetCompanies SQL: ${sql}');
+    console.log('GetCompanies SQL: ', sql);
 
     connection.query(sql, function(error, results, fields) {
-      console.log('GetCompanies Results ${results}');
-      callback(null, results);
+      if(error) {
+          console.error(error.message);
+          throw error;
+      }
+      else
+      {
+          console.log('GetCompanies Results:', results);
+          callback(null, results);
+      }
     });
   })
