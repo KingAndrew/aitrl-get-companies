@@ -9,6 +9,9 @@ let mysql = require('./node_modules/mysql');
 exports.handler = vandium.generic()
   .handler((event, context, callback) => {
 
+  console.log('\nGetCompanies event: ', event);
+  console.log('\nGetCompanies context: ', context);
+  
     let connection = mysql.createConnection({
       host: '[rds_host]',
       user: '[rds_user]',
@@ -23,7 +26,7 @@ exports.handler = vandium.generic()
 
     let sql = 'SELECT * FROM company';
 
-    console.log('GetCompanies SQL: ', sql);
+    console.log('\nGetCompanies SQL: ', sql);
 
     connection.query(sql, function(error, results, fields) {
       if(error) {
@@ -32,7 +35,7 @@ exports.handler = vandium.generic()
       }
       else
       {
-          console.log('GetCompanies Results: ', results[0]);
+          console.log('\nGetCompanies Results: ', results[0]);
           callback(null, results);
       }
     });
