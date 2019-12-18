@@ -32,7 +32,7 @@ exports.handler = vandium.generic()
       }
       else
       {
-          console.log('GetCompanies Results:', results);
+          console.log('GetCompanies Results: ', results[0]);
           callback(null, results);
       }
     });
