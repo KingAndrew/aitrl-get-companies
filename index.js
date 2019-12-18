@@ -16,7 +16,7 @@ exports.handler = vandium.generic()
       host: '[rds_host]',
       user: '[rds_user]',
       password: '[rds_password]',
-#      port: '[rds_port]',
+//      port: '[rds_port]',
       database: '[rds_database]'
     });
     connection.connect(error => {
