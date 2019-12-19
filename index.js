@@ -6,7 +6,7 @@
 
 let mysql = require('./node_modules/mysql');
 
-exports.handler((event, context, callback) => {
+exports.handler = ((event, context, callback) => {
 
   console.log('\nGetCompanies event: ', event);
   console.log('\nGetCompanies context: ', context);
