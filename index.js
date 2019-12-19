@@ -11,13 +11,21 @@ exports.handler = vandium.generic()
 
   console.log('\nGetCompanies event: ', event);
   console.log('\nGetCompanies context: ', context);
-  
+
+  //process.env.
+  console.log('\nGetCompanies : ', process.env.rds_host);
+  console.log('\nGetCompanies : ', process.env.rds_host);
+  console.log('\nGetCompanies : ', process.env.rds_user);
+  console.log('\nGetCompanies : ', process.env.rds_password);
+  console.log('\nGetCompanies : ', process.env.rds_port);
+  console.log('\nGetCompanies : ', process.env.rds_database);
+
     let connection = mysql.createConnection({
-      host: '[rds_host]',
-      user: '[rds_user]',
-      password: '[rds_password]',
-//      port: '[rds_port]',
-      database: '[rds_database]'
+      host: process.env.rds_host,
+      user: process.env.rds_user,
+      password: process.env.rds_password,
+//      port: process.env.rds_port,
+      database: process.env.rds_database
     });
     connection.connect(error => {
           if (error) throw error;
