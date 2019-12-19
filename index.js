@@ -2,12 +2,11 @@
 'use strict';
 
 // Added to handle injection
-const vandium = require('./node_modules/vandium');
+// const vandium = require('./node_modules/vandium');
 
 let mysql = require('./node_modules/mysql');
 
-exports.handler = vandium.generic()
-  .handler((event, context, callback) => {
+exports.handler((event, context, callback) => {
 
   console.log('\nGetCompanies event: ', event);
   console.log('\nGetCompanies context: ', context);
