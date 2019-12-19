@@ -4,9 +4,9 @@
 // Added to handle injection
 // const vandium = require('./node_modules/vandium');
 
-let mysql = require('./node_modules/mysql');
+import { createConnection } from './node_modules/mysql';
 
-exports.handler = ((event, context, callback) => {
+export const handler = ((event, context, callback) => {
 
   console.log('\nGetCompanies event: ', event);
   console.log('\nGetCompanies context: ', context);
@@ -19,7 +19,7 @@ exports.handler = ((event, context, callback) => {
   console.log('\nGetCompanies : ', process.env.rds_port);
   console.log('\nGetCompanies : ', process.env.rds_database);
 
-    let connection = mysql.createConnection({
+    let connection = createConnection({
       host: process.env.rds_host,
       user: process.env.rds_user,
       password: process.env.rds_password,
